@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import AddTodo from './AddTodo.js';
+import AddToDo from './addToDo.js';
 import request from 'superagent';
 
 export default class TodoApp extends Component {
     state = { todos: [] }
     componentDidMount = async() => {
-        // const user =JSON.parse(localStorage.getItem('user'));
+        
         const todos = await (await request.get(`http//localhost:${process.env.REACT_APP_BACK_END_PORT}/api/todos`))
-        // .set('Authorization',user.token);
+        
 
         console.log(todos.body)
         this.setState({ todos: todos.body })
@@ -15,7 +15,7 @@ export default class TodoApp extends Component {
 
     handleClick = async () => {
         const newTodo = {
-            // math.random() is fine here because this is a fake todo
+           //this is the fake todo?
             id: Math.random(),
             task: this.state.todoInput,
             complete: false,
@@ -39,8 +39,8 @@ export default class TodoApp extends Component {
         if (localStorage.getItem('user')) {
         return (
             <div>
-                <h3>Hello {JSON.parse(localStorage.getItem('user')).email}</h3>
-                <AddTodo 
+                <h3>Good Day {JSON.parse(localStorage.getItem('user')).email}</h3>
+                <AddToDo 
                 todoInput={ this.state.todoInput } 
                 handleClick={ this.handleClick } 
                 handleInput={ this.handleInput } 
