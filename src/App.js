@@ -18,14 +18,16 @@ export default class App extends React.Component {
         <header>
           Just Keep Going!
         </header>
+        <body>
         <BrowserRouter>
-        <Route pathe='/' render={() =>
+        <Route path='/' render={() =>
         isLoggedIn()
         ? <TodoApp />
         : <Redirect to='login' />
         }/>
-        <Route pathe='/login' component={TodoAppLogin} />
+        <Route path='/login' component={TodoAppLogin} />
         </BrowserRouter>
+        </body>
       </div>
     );
   }
