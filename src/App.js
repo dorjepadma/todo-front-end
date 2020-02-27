@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoApp from './ToDoApp.js';
 import './App.css';
+import TodoAppLogin from './todoAppLogin.js'
 import { 
   BrowserRouter, 
   Route, 
@@ -8,7 +9,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-// const isLoggedIn = () => JSON.parse(localStorage.getItem('user'));
+const isLoggedIn = () => JSON.parse(localStorage.getItem('user'));
 
 export default class App extends React.Component {
   render () {
@@ -17,14 +18,14 @@ export default class App extends React.Component {
         <header>
           Just Keep Going!
         </header>
-        {/* <BrowserRouter>
+        <BrowserRouter>
         <Route pathe='/' render={() =>
         isLoggedIn()
         ? <TodoApp />
         : <Redirect to='login' />
         }/>
         <Route pathe='/login' component={TodoAppLogin} />
-        </BrowserRouter> */}
+        </BrowserRouter>
       </div>
     );
   }

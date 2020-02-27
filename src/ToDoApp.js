@@ -6,7 +6,7 @@ export default class TodoApp extends Component {
     state = { todos: [] }
     componentDidMount = async() => {
         
-        const todos = await (await request.get(`http//localhost:${process.env.REACT_APP_BACK_END_PORT}/api/todos`))
+        const todos = await request.get(`https://nameless-caverns-43737.herokuapp.com/api/todos`)
         
 
         console.log(todos.body)
@@ -27,7 +27,7 @@ export default class TodoApp extends Component {
         const newTodos = [...this.state.todos, newTodo];
 
         this.setState({ todos: newTodos });
-        const data = await request.post(`http://localhost:${process.env.REACT_APP_BACK_END_PORT}/api/todos`, {
+        const data = await request.post(`https://nameless-caverns-43737.herokuapp.com/api/todos`, {
             task: this.state.todoInput
         })
             .set('Authorization', user.token);
@@ -60,7 +60,7 @@ export default class TodoApp extends Component {
                         const user = JSON.parse(localStorage.getItem('user'));
                         
                         this.setState({ todos: newTodos });
-                        const data = await request.put(`http://localhost:${process.env.REACT_APP_BACK_END_PORT}/api/todos/${todo.id}`, matchingTodo)
+                        const data = await request.put(`https://nameless-caverns-43737.herokuapp.com/api/todos/${todo.id}`, matchingTodo)
                         .set('Authorization', user.token);
                     }} key={todo.id}>
                         {todo.task}
